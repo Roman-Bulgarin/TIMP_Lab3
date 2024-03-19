@@ -38,6 +38,9 @@ SUITE(KeyTest){
     TEST(test7) {
         CHECK_THROW(modAlphaCipher(L""), cipher_error);
     }
+    TEST(WeakKey) {
+        CHECK_THROW(modAlphaCipher(L"ААА").encrypt(L"ПРИВЕТ"), cipher_error);
+    }  
 };
 struct KeyB_fixture {
 modAlphaCipher * p;
