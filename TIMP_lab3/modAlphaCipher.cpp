@@ -4,7 +4,14 @@ modAlphaCipher::modAlphaCipher(const wstring& skey)
     for (unsigned i=0; i<numAlpha.size(); i++) {
         alphaNum[numAlpha[i]]=i;
     }
-    key = convert(getValidKey(skey));;
+    key = convert(getValidKey(skey));
+    int n = 0;
+    for (auto e:key) {
+    	if (e==0)
+    		n++;
+   }
+   if (2*n > key.size())
+   		throw cipher_error("WeakKey");
 }
 wstring modAlphaCipher::encrypt(const wstring& open_text)
 {
